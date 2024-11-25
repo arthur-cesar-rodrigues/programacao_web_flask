@@ -1,0 +1,109 @@
+varchar(valor) = é uma string e dentro do parênteses o tamanho máximo da string
+
+comentário ex: -- comentário
+
+char(valor) = é ums string com o tamnho fixo
+
+nova -> pasta raiz, root
+
+comentário
+comentário: E$tud@_m@1$
+senha: E$tud@_m@1$
+
+bancos de dados: aula_fatec
+
+endereço ip: 201.23.3.86
+
+usuário: usr_aluno
+
+porta 5000
+abrir
+
+salvar: sim
+
+
+
+LANÇA ESSE CÓDIGO:
+CREATE TABLE Arthur_tbusuario (
+	codigo INT,
+	nome VARCHAR(80),
+	email VARCHAR(50),
+	senha VARCHAR(30)
+	
+);
+
+SELECIONA O CÓDIGO -> EXECUTAR SELEÇÃO
+
+INSERIR NO CÓDIGO : DROP TABLE Arthur_tbusuario
+
+selecionar a linha: DROP TABLE Arthur_tbusuario -> executar seleção (esse comando para apagar a minha tabela/ banco de dados que criei no servidor)
+consulta
+executar seleção -> excluir tabela
+
+inserir e executar seleção a seguinte linha: SELECT codigo, nome, email, senha FROM Arthur_tbusuario
+
+SELECT(seleciona e mostra para mim as seguintes colunas) Codigo, nome, email, senha FROM(origem das colunas, de onde vem as colunas) Arthur_tbusuario
+
+*não importa a ordem das colunas (nao precisa ser igaul no banco de dados, porém vai mostrar na ordem que voce colocou no select), pode colocar colunas repetidas no select, pode apertar enter(quebrar linhas) que o comando continuara funcionando da mesma forma
+
+inserir e executar seleção da seguinte linha: INSERT INTO Arthur_tbusuario(codigo, nome, email, senha) VALUES (1, "Margarida", "Margarida@gmail.com", "P@ssw0rd")
+
+INSERT INTO(insira dados das colunas da tabela) Arthur_tbusuario(tabela)(codigo, nome, email, senha)(as colunas que vão receber os dados) VALUES (1, "Margarida", "Margarida@gmail.com", "P@ssw0rd")(os dados que serão inseridos nas colunas conforme ordem das colunas)
+
+executar a linha do select
+
+*conforme for inserindo os dados, as linhas das colunas são inseridas e guardadas e salvas no banco de dados
+
+código do primeiro banco de dados criado por mim:
+
+CREATE TABLE Arthur_tbusuario (
+	codigo INT,
+	nome VARCHAR(80),
+	email VARCHAR(50),
+	senha VARCHAR(30)
+);
+
+DROP TABLE Arthur_tbusuario
+
+SELECT codigo, nome, email, senha FROM Arthur_tbusuario
+
+INSERT INTO Arthur_tbusuario (codigo, nome, email, senha) VALUES (1, "Margarida", "Margarida@gmail.com", "P@ssw0rd")
+
+INSERT INTO Arthur_tbusuario (codigo) VALUES (3) -- inserindo apenas o valor de uma coluna, ou seja a linha vai ficar apenas com um valor verdadeiro e o resto com valores "null" 
+
+INSERT INTO Arthur_tbusuario (codigo, nome, email, senha) VALUES (NULL, "Margarida", "Margarida@gmail.com", NULL) -- outra forma de inserir dados individuais, neste caso vamos inserir apenas dados de 2 colunas
+
+apagar a tabela: executar a linha drop..
+
+*PRIMARY Key- os dados desta coluna não podem se repetir, e não podem ter valores nulos
+
+*unique- os dados desta coluna não podem se repetir, porém pode ter valores nulos
+
+mudar o antigo create table para o seguinte e cria-lo:
+
+CREATE TABLE Arthur_tbusuario (
+	codigo INT PRIMARY Key,
+	nome VARCHAR(80),
+	email VARCHAR(50) unique,
+	senha VARCHAR(30)
+);
+
+apagar a tabela anterior e criar a seguinte
+
+CREATE TABLE Arthur_tbusuario (
+	codigo INT AUTO_INCREMENT PRIMARY Key,
+	nome VARCHAR(80),
+	email VARCHAR(50) unique,
+	senha VARCHAR(30)
+);
+
+
+*AUTO_INCREMENT = faz com que o dado da coluna seja inserido automaticamente (vai incrementado de 1 e 1, começa com 1 e a cada vez que é inserindo um dado é incrementado 1 no dado dessa tabela), assim não pode inserir o valor da coluna que possui essa característica, porque ela insere o valor automaticamente; gap= quando você insere um valor errado (que não atinge as permissões desses dados) o dado que possui o auto_increment adiciona valor, ou seja, na tentativa que não da certo de inserção de dados, o auto_increment adiciona e você acaba perdendo esse valor
+
+inserir o seguinte código
+
+SELECT codigo, nome, email, senha FROM Arthur_tbusuario WHERE Codigo = 3
+
+*WHERE = é qunado você quer pesquisar colunas de uma linha específica, ai depois do where você adiciona a lógica para pegar a linha em especifica que voe precisar (pode inserir o "E" (AND) e "OU" (OR))
+
+* TABELA LIKE CONDIÇÃO = pega mais de um dado de uma vez 

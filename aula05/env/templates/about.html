@@ -1,0 +1,8 @@
+{% extends "base.html" %} <!--informando para o flask que essa página é um extend da página base html, é uma extensão da página base ("base.html") -->
+
+{% block conteudo %} <!--como foi informadodo o about é um extend do base, e foi criado aberto um bloco-->
+    <section class="main-content">
+        <h2>About Us</h2>
+        <p>This is the about page content.</p> <!--o código html dentro do bloco vai ser o código diferente entre as páginas, ou seja, as configurações base (que estão no arquivo "base.html") é carregado as configurações html do base, e aonde no foi aberto o bloco no código base é carregado os códigos personalizados dos outros arquivos html (no caso da pagina about a classe "main-section")-->
+    </section>
+{% endblock %}

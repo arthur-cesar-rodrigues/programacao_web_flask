@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="shortcut icon" href="{{ url_for("static", filename="aluno.ico") }}" type="image/x-icon">
+    <title>Escola Educante</title>
+</head>
+<body>
+    <nav class="navbar bg-dark navbar-dark navbar-expand-sm py-3 stick-top">
+        <div class="container">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <img class="fs-1 me-2" src="{{ url_for("static", filename="aluno.png") }}" style="width: 75px;">
+                Escola Educante</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuNavbar">
+                <div class="navbar-nav">
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Disciplina</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/tela_cad_disciplina" class="dropdown-item">Cadastrar</a></li>
+                            <li><a href="/tela_exc_edit_disc" class="dropdown-item">Editar e Excluir</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Curso</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/tela_cad_curso" class="dropdown-item">Cadastrar</a></li>
+                            <li><a href="#" class="dropdown-item">Editar e Excluir</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Professores</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Cadastrar</a></li>
+                            <li><a href="#" class="dropdown-item">Editar e Excluir</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Alunos</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Cadastrar</a></li>
+                            <li><a href="#" class="dropdown-item">Editar e Excluir</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        {% block conteudo %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

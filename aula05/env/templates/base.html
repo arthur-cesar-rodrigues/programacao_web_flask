@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <!-- <link rel="stylesheet" href="../static/styles.css">  -->
+    <link rel="stylesheet" href= {{ url_for("static", filename="styles.css") }} > 
+    <!--usando o url for para adicionar um arquivo css dinâmico  -->
+</head>
+<body>
+    <header>
+        <h1>Meu Site</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- <section class="main-content">
+        <h2>Welcome to our website!</h2>
+        <p>This is the homepage content.</p>
+    </section> -->
+
+    <!-- apaga a parte que muda entre as páginas, e deixa apenas os elementos em comum entre as páginas e mantém no arquivo base html -->
+
+    {% block conteudo %} <!-- criando um bloco (onde voce insere o código diferente entre as páginas, o que muda entre elas) com flask-->
+
+    {% endblock %} <!-- fim do bloco-->
+
+    <footer>
+        <p>&copy; 2024 Meu Site. Todos os direitos reservados.</p>
+    </footer>
+    {% block outroConteudo %} {% endblock %}
+
+    <!-- pode criar a quantidade de blocks que precisar, porém o local onde fica o bloco é definido do arquivo pai (no caso o base.htl) -->
+</body>
+</html>

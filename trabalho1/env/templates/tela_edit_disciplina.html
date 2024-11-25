@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% if alterado == false %}
+        <h1>Cadastrar Disciplina</h1>
+        <form class="form-group mt-4" action="{{ url_for("salva_disciplina", id = id) }}" method="post">
+            <label class="form-label">Nome da Disciplina</label>
+            <input class="form-control" type="text" name="nome_disciplina" value="{{ nome }}" required><br>
+            <label class="form-label">Carga Horária</label>
+            <input class="form-control" type="number" name="carga_horaria" value="{{ carga_horaria }}" required><br>
+            <input class="btn btn-primary" type="submit" value="Alterar">
+        </form>
+
+    {% else %}
+        <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+            {{ mensagem }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="container text-center mt-4">
+            <a href="/tela_exc_edit_disc" class="btn btn-primary">Ver Lista de Disciplinas</a>
+        </div>
+    {% endif %}
+{% endblock %}

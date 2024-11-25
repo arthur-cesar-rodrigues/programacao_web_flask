@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <section class="main-content">
+        <h2>Welcome to our website!</h2>
+        <p>This is the homepage content.</p>
+        <img src="../static/Captura de Tela (267).png"> 
+        <!-- inserindo uma imagem no html flask, é necessário colocar a imagem que for usada dentro da pasta static, e depois dentro da página html, insira a tag img, e dentro do atributo src insira: ../static/nomeDaImagem; -->
+        
+
+        <img src= {{ url_for("static", filename= "Captura de Tela (267).png") }}> 
+        <!-- {#  tem a forma de url dinâmica usando tag img, o que muda é o valor do src(nãp põe aspas): {{ url_for("nomeDaPasta", filename="nomedoarquivo.extensão")}}  #} -->
+        <img src= {{ url_for("static", filename= "Captura de Tela (267).png") }}>
+    </section>
+{% endblock %}
+
+
+{% block outroConteudo %}
+    <h1> texto </h1>
+{% endblock %}

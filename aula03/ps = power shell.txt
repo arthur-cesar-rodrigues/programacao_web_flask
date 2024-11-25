@@ -1,0 +1,3 @@
+ps = power shell
+cada programa precisa ser uma pasta diferente, você pode definir em cada pasta a versão do python diferente (criando ambientes virtuais), dentro de cada ambiente virtual vc instala a melhor versão python possível python: py -m venv env(enviarement = ambiente) -> cria uma pasta env dentro do diretório, e dentro do env cria uma versão python -> precisa ativar a pasta do ambiente virtual para poder instal o framework flask (Scripts -> .\Activate) e depois instalar o flask
+ls(unix, linux) = dir (Microsoft, ps)

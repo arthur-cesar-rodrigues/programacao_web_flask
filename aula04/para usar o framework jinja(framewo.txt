@@ -1,0 +1,1 @@
+para usar o framework jinja(framework para o python usar o html), precisa criar uma pasta "templates", render_template(carrega uma página web, renderiza)

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <link rel="stylesheet" type="text/css" href="static/bootstrap.css">
+</head>
+<body>
+    <h1>Calcular o indíce de massa corporal utilizando o POST</h1>
+    <form action="calcular_imc_post" class="form-control" method="post">
+        <!-- quando o botão submit (calcular) for clicado, o botão (que tiver o tipo submit) vai submeter o formulário para a seguinte rota(dentro de action), através do método post(para chamar uma rota pelo post, a rota que for ser chamada precisa ser post-método de envio de informações) -->
+        <label class="form-label">Sua altura</label>
+        <input type="text" class="form-control" name="txt_altura"><br>
+        <label class="form-label">Seu peso</label>
+        <input type="text" class="form-control" class="form-control-plaintex" name="txt_peso">
+        <input class="btn btn-primary" type="submit" value="calcular">
+        <input class="btn btn-primary" type="reset" value="Limpar">
+    </form>
+    <h1>Calcular o indíce de massa corporal utilizando o GET</h1>
+    <form action="calcular_imc_get" class="form-control" method="get">
+        <!-- quando o botão submit (calcular) for clicado, o botão (que tiver o tipo submit) vai submeter o formulário para a seguinte rota(dentro de action), através do método get(para chamar uma rota pelo get, a rota que for ser chamada precisa ser inserida no action fo formuláriopost-método de envio de informações) -->
+        <label class="form-label">Sua altura</label>
+        <input type="text" class="form-control" name="txt_altura"><br>
+        <label class="form-label">Seu peso</label>
+        <input type="text" class="form-control" class="form-control-plaintex" name="txt_peso">
+        <input class="btn btn-primary" type="submit" value="calcular">
+        <input class="btn btn-primary" type="reset" value="Limpar">
+    </form>
+    <p>Resultado imc: {{ result }}</p>
+    <img src={{ Imagem }} >
+    {{ result_imc }}
+    <!-- variavel result_imc criada aqui e nela foi atribuida o valor da variavel imc que contem os dados do formulário -->
+</body>
+</html>

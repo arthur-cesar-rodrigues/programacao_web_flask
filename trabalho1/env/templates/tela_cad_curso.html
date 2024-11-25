@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% if disciplinas %}
+        <h1>Cadastrar Curso</h1>
+        <form class="form-group mt-4" action="/cadastra_curso" method="post">
+            <label class="form-label">Nome do Curso</label>
+            <input class="form-control" type="text" name="nome_curso" required><br>
+            <label class="form-label">Escolha as disciplinas do curso:</label>
+        {% for disciplina in disciplinas %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="disciplina {{ disciplina[0] }}" name="disciplinas" value="{{ disciplina[0] }}">
+                <label class="form-check-label" for="disciplina {{ disciplina[0] }}">{{ disciplina[1] }} - {{ disciplina[2] }} Horas</label>
+            </div>
+        {% endfor %}    
+            <input class="btn btn-primary mt-3" type="submit" value="Cadastrar">
+        </form>
+    {% else %}
+        <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+            {{ mensagem }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="container text-center mt-4">
+            <a href="/tela_cad_disciplina" class="btn btn-primary">Cadastrar Disciplinas</a>
+        </div>
+    {% endif %}
+{% endblock %}

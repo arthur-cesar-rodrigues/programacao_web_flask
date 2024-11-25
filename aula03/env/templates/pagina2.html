@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if usuario %}
+            <h3> Ola {{ usuario }}, tudo bem? </h3>
+    {% else %}
+        <h3> usuario não autenticado </h3>
+    {% endif %}    
+<!-- usando estrutura de repetição for  (precisa do for e endfor)-->
+        {% for i in range(contador) %}
+            {{i}}
+        {% endfor %}
+</body>
+</html>
