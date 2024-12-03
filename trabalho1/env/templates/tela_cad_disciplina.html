@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
 {% block conteudo %}
-    <h1>Cadastrar Disciplina</h1>
-    <form class="form-group mt-4" action="/cadastra_disciplina" method="post">
-        <label class="form-label">Nome da Disciplina</label>
-        <input class="form-control" type="text" name="nome_disciplina" required><br>
-        <labe class="form-label">Carga Horária</label>
-        <input class="form-control" type="number" name="carga_horaria" required><br>
-        <input class="btn btn-primary" type="submit" value="Cadastrar">
-    </form>
-
     {% if mensagem %}
         <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
             {{ mensagem }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endif %}
+    
+    <h1>Cadastrar Disciplina</h1>
+    <form class="form-group mt-4" action="/cadastra_disciplina" method="post">
+        <label class="form-label">Nome da Disciplina</label>
+        <input class="form-control" type="text" name="nome_disciplina" placeholder="Ex: Programação Web..." required><br>
+        <labe class="form-label">Carga Horária</label>
+        <input class="form-control" type="number" name="carga_horaria" required><br>
+        <input class="btn btn-primary" type="submit" value="Cadastrar">
+    </form>
 
 {% endblock %}

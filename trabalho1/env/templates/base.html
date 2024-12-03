@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o arquivo JS (que valida ao menos uma disciplina selecionada) -->
+    <script src="{{ url_for("static", filename="validaDisciplina.js") }}"></script>
+    <!-- Incluindo o arquivo JS (que valida um curso selecionado) -->
+    <script src="{{ url_for("static", filename="validaCurso.js") }}"></script>
+    <!-- Incluindo o arquivo JS (que valida o cpf do aluno) -->
+    <script src="{{ url_for("static", filename="validaCPF.js") }}"></script>
+    <!-- Incluindo o arquivo JS (que valida o telefone do professor) -->
+    <script src="{{ url_for("static", filename="validaTelefone.js") }}"></script>
     <link rel="shortcut icon" href="{{ url_for("static", filename="aluno.ico") }}" type="image/x-icon">
     <title>Escola Educante</title>
 </head>
@@ -32,23 +40,23 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Curso</a>
                         <ul class="dropdown-menu">
                             <li><a href="/tela_cad_curso" class="dropdown-item">Cadastrar</a></li>
-                            <li><a href="#" class="dropdown-item">Editar e Excluir</a></li>
+                            <li><a href="/tela_exc_edit_curso" class="dropdown-item">Editar e Excluir</a></li>
                         </ul>
                     </div>
 
                     <div class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Professores</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" class="dropdown-item">Cadastrar</a></li>
-                            <li><a href="#" class="dropdown-item">Editar e Excluir</a></li>
+                            <li><a href="/tela_cad_professor" class="dropdown-item">Cadastrar</a></li>
+                            <li><a href="/tela_exc_edit_professor" class="dropdown-item">Editar e Excluir</a></li>
                         </ul>
                     </div>
                     
                     <div class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Alunos</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" class="dropdown-item">Cadastrar</a></li>
-                            <li><a href="#" class="dropdown-item">Editar e Excluir</a></li>
+                            <li><a href="/tela_cad_aluno" class="dropdown-item">Cadastrar</a></li>
+                            <li><a href="/tela_exc_edit_aluno" class="dropdown-item">Editar e Excluir</a></li>
                         </ul>
                     </div>
             </div>

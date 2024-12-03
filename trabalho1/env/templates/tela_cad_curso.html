@@ -1,25 +1,48 @@
 {% extends "base.html" %}
 
 {% block conteudo %}
+    <!-- Formulário de cadastro de curso -->
     {% if disciplinas %}
+        <!-- Exibição de mensagens -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         <h1>Cadastrar Curso</h1>
-        <form class="form-group mt-4" action="/cadastra_curso" method="post">
+        <form class="form-group mt-4" action="/cadastra_curso" method="post" onsubmit="return validaDisciplina()">
+            <!-- Nome do Curso -->
             <label class="form-label">Nome do Curso</label>
-            <input class="form-control" type="text" name="nome_curso" required><br>
+            <input class="form-control" type="text" name="nome_curso" placeholder="Ex: ADS..." required><br>
+
+            <!-- Seleção de Disciplinas -->
             <label class="form-label">Escolha as disciplinas do curso:</label>
-        {% for disciplina in disciplinas %}
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="disciplina {{ disciplina[0] }}" name="disciplinas" value="{{ disciplina[0] }}">
-                <label class="form-check-label" for="disciplina {{ disciplina[0] }}">{{ disciplina[1] }} - {{ disciplina[2] }} Horas</label>
-            </div>
-        {% endfor %}    
+            {% for disciplina in disciplinas %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="disciplina_{{ disciplina[0] }}" name="disciplinas" value="{{ disciplina[0] }}">
+                    <label class="form-check-label" for="disciplina_{{ disciplina[0] }}">
+                        {{ disciplina[1] }} - {{ disciplina[2] }} Horas
+                    </label>
+                </div>
+            {% endfor %}
+
+            <!-- Botão de Cadastro -->
             <input class="btn btn-primary mt-3" type="submit" value="Cadastrar">
         </form>
     {% else %}
+        <!-- Mensagem de erro: sem disciplinas -->
         <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
-            {{ mensagem }}
+            Não existe disciplinas cadastradas. Cadastre disciplinas antes de cadastrar um curso.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+
+        <!-- Botão para cadastrar disciplinas -->
         <div class="container text-center mt-4">
             <a href="/tela_cad_disciplina" class="btn btn-primary">Cadastrar Disciplinas</a>
         </div>

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block conteudo %}
-    {% if alterado == false %}
-        <h1>Cadastrar Disciplina</h1>
+    {% if alterado == False %}
+        <h1>Alterar Disciplina</h1>
         <form class="form-group mt-4" action="{{ url_for("salva_disciplina", id = id) }}" method="post">
             <label class="form-label">Nome da Disciplina</label>
-            <input class="form-control" type="text" name="nome_disciplina" value="{{ nome }}" required><br>
+            <input class="form-control" type="text" name="nome_disciplina" value="{{ nome }}" placeholder="Ex: Programação Web..." required><br>
             <label class="form-label">Carga Horária</label>
             <input class="form-control" type="number" name="carga_horaria" value="{{ carga_horaria }}" required><br>
-            <input class="btn btn-primary" type="submit" value="Alterar">
+            <input class="btn btn-primary" type="submit" value="Salvar">
         </form>
 
     {% else %}
