@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Professores</h1>
+    <form class="form-group d-flex align-items-center mt-4" action="/procura_professor" method="post">
+        <input class="form-control me-2" type="search" name="pesquisa_professor" placeholder="Digite aqui o nome do professor..." required>
+        <button type="submit" class="btn p-0">
+            <img src="{{ url_for("static", filename="pesquisa.png") }}" style="height: 30px; width: 30px;"></img>
+        </button>
+    </form>
+           
+    {% if pesquisa == False %}
+        <table class="table table-sprited mt-4">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome do Professor</th>
+                <th scope="col">Disciplinas Ministradas</th>
+                <th scope="col">Excluir</th>
+                <th scope="col">Alterar</th>
+            </tr>
+            {% for professor_id, dados in professores.items() %}
+                <tr>
+                    <td>{{ professor_id }}</td>
+
+                    <td>{{ dados.nome }}</td>
+
+                    <td>
+                        {% if dados.disciplinas %}
+                            {% for disciplina in dados.disciplinas %}
+                                {{ disciplina }}<br>
+                            {% endfor %}
+                        {% else %}
+                            <em>Nenhuma disciplina ministrada.</em>
+                        {% endif %}
+                    </td>
+
+                    <td><a href={{ url_for("exclui_professor", id=professor_id) }}><img src="{{ url_for("static", filename="bloquear.png") }}" style="height: 30px; width: 30px;"></a></td>
+
+                    <td><a href={{ url_for("tela_edit_professor", id=professor_id) }}><img src="{{ url_for("static", filename="editar.png") }}" style="height: 30px; width: 30px;"></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        {% if professores %}
+            <table class="table table-sprited mt-4">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome do Professor</th>
+                    <th scope="col">Disciplinas Ministradas</th>
+                    <th scope="col">Excluir</th>
+                    <th scope="col">Alterar</th>
+                </tr>
+                {% for professor_id, dados in professores.items() %}
+                    <tr>
+                        <td>{{ professor_id }}</td>
+
+                        <td>{{ dados.nome }}</td>
+
+                        <td>
+                            {% if dados.disciplinas %}
+                                {% for disciplina in dados.disciplinas %}
+                                    {{ disciplina }}<br>
+                                {% endfor %}
+                            {% else %}
+                                <em>Nenhuma disciplina ministrada.</em>
+                            {% endif %}
+                        </td>
+
+                        <td><a href={{ url_for("exclui_professor", id=professor_id) }}><img src="{{ url_for("static", filename="bloquear.png") }}" style="height: 30px; width: 30px;"></a></td>
+                        
+                        <td><a href={{ url_for("tela_edit_professor", id=professor_id) }}><img src="{{ url_for("static", filename="editar.png") }}" style="height: 30px; width: 30px;"></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                {{ mensagem }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        <div class="container text-center mt-4">
+            <a href="/tela_exc_edit_professor" class="btn btn-primary">Ver Lista de Professores</a>
+        </div>
+    {% endif %}
+{% endblock %}

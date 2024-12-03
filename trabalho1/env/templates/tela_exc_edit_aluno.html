@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <h1>Alunos</h1>
+    <form class="form-group d-flex align-items-center mt-4" action="/procura_aluno" method="post">
+        <input class="form-control me-2" type="search" name="pesquisa_aluno" placeholder="Digite aqui o nome do aluno..." required>
+        <button type="submit" class="btn p-0">
+            <img src="{{ url_for("static", filename="pesquisa.png") }}" style="height: 30px; width: 30px;"></img>
+        </button>
+    </form>
+           
+    {% if pesquisa == False %}
+        <table class="table table-sprited mt-4">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome do Aluno</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Curso matriculado</th>
+                <th scope="col">Excluir</th>
+                <th scope="col">Alterar</th>
+            </tr>
+            {% for aluno in alunos %}
+                <tr>
+                    <td>{{ aluno[0] }}</td>
+
+                    <td>{{ aluno[1] }}</td>
+
+                    <td>{{ aluno[2] }}</td>
+
+                    <td>{{ aluno[3] }}</td>
+
+                    <td><a href={{ url_for("exclui_aluno", id=aluno[0]) }}><img src="{{ url_for("static", filename="bloquear.png") }}" style="height: 30px; width: 30px;"></a></td>
+
+                    <td><a href={{ url_for("tela_edit_aluno", id=aluno[0]) }}><img src="{{ url_for("static", filename="editar.png") }}" style="height: 30px; width: 30px;"></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        {% if alunos %}
+            <table class="table table-sprited mt-4">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome do Aluno</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Curso matriculado</th>
+                    <th scope="col">Excluir</th>
+                    <th scope="col">Alterar</th>
+                </tr>
+                {% for aluno in alunos %}
+                    <tr>
+                        <td>{{ aluno[0] }}</td>
+
+                        <td>{{ aluno[1] }}</td>
+
+                        <td>{{ aluno[2] }}</td>
+
+                        <td>{{ aluno[3] }}</td>
+
+                        <td><a href={{ url_for("exclui_aluno", id=aluno[0]) }}><img src="{{ url_for("static", filename="bloquear.png") }}" style="height: 30px; width: 30px;"></a></td>
+
+                        <td><a href={{ url_for("tela_edit_aluno", id=aluno[0]) }}><img src="{{ url_for("static", filename="editar.png") }}" style="height: 30px; width: 30px;"></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                {{ mensagem }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        <div class="container text-center mt-4">
+            <a href="/tela_exc_edit_aluno" class="btn btn-primary">Ver Lista de Alunos</a>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html"%}
+
+{% block conteudo %}
+    {% if alterado == False %}
+        <h1>Alterar Professor</h1>
+        <form class="form-group mt-4" action="{{ url_for("salva_professor", id = id) }}" method="post" onsubmit="return validaTelefone() && validaDisciplina()">
+            <label class="form-label">Nome</label>
+            <input class="form-control" type="text" name="nome_professor" value="{{ professor[0] }}" placeholder="Ex: Frederico Mangueira..." required><br>
+
+            <label class="form-label">Telefone</label>
+            <input class="form-control" type="text" name="telefone" placeholder="Exemplo: (099)99999-9999" minlength="15" maxlength="15" value="{{ professor[1] }}" required><br>
+
+            <label class="form-label">Usuário de Login</label>
+            <input class="form-control" type="text" name="usuario_professor" minlength="4" placeholder="O usuário precisa ter ao menos 4 caracteres..." value="{{ professor[2] }}" required><br>
+
+            <label class="form-label">Senha</label>
+            <input class="form-control" type="password" name="senha_professor" minlength="5" placeholder="A senha precisa ter ao menos 5 caracteres..." value="{{ professor[3] }}" required><br>
+            
+
+            <!-- Seleção de Disciplinas -->
+            <label class="form-label">Escolha as disciplinas que serão ministradas:</label>
+            {% for disciplina in todas_disciplinas %}
+                <div class="form-check">
+                    <input class="form-check-input" 
+                        type="checkbox" 
+                        id="disciplina{{ disciplina[0] }}" 
+                        name="disciplinas" 
+                        value="{{ disciplina[0] }}"
+                        {% if disciplina[0] in disciplinas_associadas %}checked{% endif %}>
+                    <label class="form-check-label" for="disciplina{{ disciplina[0] }}">
+                        {{ disciplina[1] }} - {{ disciplina[2] }} Horas
+                    </label>
+                </div>
+        {% endfor %}
+            <!-- Botão de Salvar as alterações -->
+            <input class="btn btn-primary mt-3" type="submit" value="Salvar">
+        </form>
+    {% else %}
+        <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+            {{ mensagem }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="container text-center mt-4">
+            <a href="/tela_exc_edit_professor" class="btn btn-primary">Ver Lista de Professores</a>
+        </div>
+    {% endif %}
+{% endblock %}
