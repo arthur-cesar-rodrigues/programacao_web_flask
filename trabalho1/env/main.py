@@ -463,30 +463,6 @@ def exclui_professor(id):
 
     meucursor = db.cursor()
 
-    query_ids_disciplina = "SELECT id_disciplina FROM Arthur_trabalho_professor_disciplina WHERE id_professor = %s"
-    
-    meucursor.execute(query_ids_disciplina, (id,))
-
-    ids_disciplinas_associadas = meucursor.fetchall()
-
-    query_ids_curso = "SELECT id_curso FROM Arthur_trabalho_curso_disciplina WHERE id_disciplina = %s"
-
-    for id_disciplina in ids_disciplinas_associadas:
-        meucursor.execute(query_ids_curso, (id_disciplina))
-
-    ids_cursos_associados = meucursor.fetchall()
-
-    query_id_aluno = "SELECT id_aluno FROM Arthur_trabalho_aluno_curso WHERE id_curso = %s"
-
-    for id_curso in ids_cursos_associados:
-        meucursor.execute(query_id_aluno, (id_curso))
-
-    id_aluno = meucursor.fetchone()
-
-    if id_aluno:
-        flash("Não foi possível deletar o professor selecionado. O professor já se encontra cadastrado em um ou mais cursos que possuem alunos matriculados, para remover o professor é necessário remover os alunos matriculados no curso que possui a matéria lecionada pelo professor primeiro.")
-        return redirect("/tela_exc_edit_professor")
-
     #deletando associações entre professor e disciplina (de acordo com o id do professor)
     query_deleta_professor_disciplina = "DELETE FROM Arthur_trabalho_professor_disciplina WHERE id_professor = %s"
     meucursor.execute(query_deleta_professor_disciplina, (id,))
